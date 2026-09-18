@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Rubik', sans-serif;
+
+  /* Custom Palette Setup */
+  --color-pale-slate-100: #24292f;
+  --color-pale-slate-200: #49525f;
+  --color-pale-slate-300: #6d7b8e;
+  --color-pale-slate-400: #9ca5b3;
+  --color-pale-slate-500: #cacfd6;
+  --color-pale-slate-600: #d6d9df;
+  --color-pale-slate-700: #e0e3e7;
+  --color-pale-slate-800: #eaecef;
+  --color-pale-slate-900: #f5f6f7;
+
+  --color-pearl-aqua-100: #16362e;
+  --color-pearl-aqua-200: #2c6b5c;
+  --color-pearl-aqua-300: #42a18b;
+  --color-pearl-aqua-400: #6bc3ae;
+  --color-pearl-aqua-500: #9fd8cb;
+
+  --color-deep-teal-100: #101814;
+  --color-deep-teal-200: #202f28;
+  --color-deep-teal-300: #30473c;
+  --color-deep-teal-400: #405f50;
+  --color-deep-teal-500: #517664;
+  --color-deep-teal-600: #6b9a83;
+
+  --color-dark-khaki-100: #090a05;
+  --color-dark-khaki-200: #12150a;
+  --color-dark-khaki-300: #1b1f0f;
+  --color-dark-khaki-400: #242914;
+  --color-dark-khaki-500: #2d3319;
+}
+
+@variant light (&:where(.light, .light *));
+
+/* Default Root & Body Styles (Dark Mode) */
+:root {
+  font-family: 'Rubik', sans-serif;
+  color-scheme: dark;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #090a05 !important; /* dark-khaki-100 */
+  color: #eaecef; /* pale-slate-800 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Overrides */
+html.light, html.light body {
+  color-scheme: light;
+  background-color: #f5f6f7 !important; /* pale-slate-900 */
+  color: #12150a; /* dark-khaki-200 */
+}
+
+/* Animated Gradient Angle Property */
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-glow {
+  from {
+    --glow-angle: 0deg;
+  }
+  to {
+    --glow-angle: 360deg;
+  }
+}
+
+/* Base Glowing Frame Container */
+.glow-card {
+  position: relative;
+  border-radius: 0.85rem;
+  padding: 2px; /* Defines the thickness of the glowing border ring */
+  background-image: conic-gradient(
+    from var(--glow-angle),
+    #4DA1A9, /* Pearl Aqua */
+    #2E5052, /* Deep Teal */
+    #020402, /* Dark Khaki */
+    #A9B2AC, /* Pale Slate */
+    #4DA1A9  /* Pearl Aqua */
+  );
+  animation: spin-glow 3s linear infinite;
+  isolation: isolate;
+}
+
+/* Ambient Backlight Glow behind the card */
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 0.85rem;
+  z-index: -1;
+  background-image: conic-gradient(
+    from var(--glow-angle),
+    #4DA1A9, /* Pearl Aqua */
+    #2E5052, /* Deep Teal */
+    #020402, /* Dark Khaki */
+    #A9B2AC, /* Pale Slate */
+    #4DA1A9  /* Pearl Aqua */
+  );
+  animation: spin-glow 3s linear infinite;
+  filter: blur(.25rem);
+  opacity: 0.6;
+}
+
+/* Inner Card Body (Solid Fill masking the gradient) */
+.glow-card-inner {
+  background-color: #020402; /* Solid dark background covering the center */
+  border-radius: 0.75rem;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem; /* Standard p-6 spacing inside the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Explicit Light Mode Override for Cards */
+html.light .glow-card-inner {
+  background-color: #f5f6f7 !important;
+  color: #12150a;
+}
+
+@keyframes glow-ltr {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes glow-rtl {
+  0% { background-position: 200% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Horizontal Glow Container Base */
+.horizontal-glow-ltr,
+.horizontal-glow-rtl {
+  position: relative;
+  isolation: isolate; /* Ensures z-index stacking context stays inside header */
+}
+
+/* Base Gradient Line at Bottom Border */
+.horizontal-glow-ltr {
+  background: linear-gradient(90deg, #4DA1A9, #2E5052, #020402, #A9B2AC, #4DA1A9);
+  background-size: 200% 100%;
+  animation: glow-ltr 3s linear infinite;
+}
+
+.horizontal-glow-rtl {
+  background: linear-gradient(90deg,#4DA1A9, #2E5052, #020402, #A9B2AC, #4DA1A9);
+  background-size: 200% 100%;
+  animation: glow-rtl 3s linear infinite;
+}
+
+/* Ambient Backlight Glow behind Navbar/Footer (matches ::before in .glow-card) */
+.horizontal-glow-ltr::before,
+.horizontal-glow-rtl::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: inherit; /* Inherits the exact same linear-gradient and background-size */
+  animation: inherit;  /* Inherits glow-ltr / glow-rtl animation */
+  filter: blur(0.25rem); /* Blurs ONLY the background glow */
+  opacity: 0.7;
+  pointer-events: none;
+}
