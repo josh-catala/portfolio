@@ -82,7 +82,7 @@ export default function About() {
           download="Josh_Catala_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm text-dark-khaki-100 bg-pearl-aqua-400 light:bg-deep-teal-600 hover:bg-pearl-aqua-300 light:hover:bg-deep-teal-500 active:scale-95 transition-all shadow-md self-start sm:self-center shrink-0"
+          className="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm text-dark-khaki-100 bg-pearl-aqua-400 light:pearl-aqua-400 hover:bg-pearl-aqua-300 light:hover:bg-deep-teal-500 active:scale-95 transition-all shadow-md self-start sm:self-center shrink-0"
         >
           <FaDownload className="w-4 h-4" />
           <span>Download Resume</span>

@@ -7,9 +7,18 @@ export default function Projects() {
       title: "Portfolio Website",
       description: "A mobile-first developer portfolio built with React, Vite, and Tailwind CSS.",
       tags: ["React", "Tailwind CSS", "Vite"],
-      liveUrl: "https://yourportfolio.com",
+      liveUrl: "https://josh-catala.github.io/portfolio",
       githubUrl: "https://github.com/josh-catala/portfolio"
-    }
+    },
+    {
+      id: 2,
+      title: "Internship Outcomes",
+      description: "A description of some of the work done during my internship at BH, Inc. (NO CODE AVAILABLE)",
+      tags: ["React", "TS", "SCSS", "Flask", "PostgreSQL", "Python"],
+      liveUrl: "https://josh-catala.github.io/portfolio",
+      internalUrl: "/internship",
+      githubUrl: "https://github.com/josh-catala/portfolio"
+    },
   ];
 
   return (

@@ -1,19 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaGithub, FaLinkedin, FaCode, FaMobileAlt, FaBolt } from 'react-icons/fa';
 import ProjectCard from '../components/ProjectCard';
+import Projects from './Projects';
 
 export default function Home() {
   // Highlighted projects preview for the home page
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "Portfolio Website",
-      description: "A mobile-first developer portfolio built with React, Vite, and Tailwind CSS v4 featuring dynamic theme modes and custom glowing borders.",
-      tags: ["React", "Tailwind CSS", "Vite"],
-      liveUrl: "https://josh-catala.github.io/portfolio",
-      githubUrl: "https://github.com/josh-catala/portfolio"
-    }
-  ];
+  
 
   const highlights = [
     {
@@ -68,7 +60,7 @@ export default function Home() {
           {/* Primary CTA: View Projects */}
           <Link
             to="/about"
-            className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl font-semibold text-dark-khaki-100 bg-pearl-aqua-400 light:bg-deep-teal-600 hover:bg-pearl-aqua-300 light:hover:bg-deep-teal-500 active:scale-95 transition-all shadow-lg"
+            className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl font-semibold text-dark-khaki-100 bg-pearl-aqua-400 light:bg-pear-aqua-400 hover:bg-pearl-aqua-300 light:hover:bg-deep-teal-500 active:scale-95 transition-all shadow-lg"
           >
             <span>About Me</span>
             <FaArrowRight className="w-4 h-4" />
@@ -107,26 +99,6 @@ export default function Home() {
 
       </section>
 
-      {/* High-Level Feature Cards */}
-      {/* <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {highlights.map((item, idx) => (
-          <div key={idx} className="glow-card">
-            <div className="glow-card-inner light:bg-white light:text-dark-khaki-100">
-              <div className="p-3 rounded-lg bg-deep-teal-200 light:bg-pale-slate-800 w-fit">
-                {item.icon}
-              </div>
-              <h3 className="text-lg font-bold tracking-tight text-pale-slate-900 light:text-dark-khaki-100 mt-4">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-xs sm:text-sm text-pale-slate-400 light:text-deep-teal-400 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          </div>
-        ))}
-      </section> */}
-
-      {/* Featured Project Section */}
       <section className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
@@ -147,10 +119,8 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className="">
+          {Projects()}
         </div>
       </section>
 

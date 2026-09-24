@@ -1,4 +1,5 @@
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function ProjectCard({ project = {} }) {
   const {
@@ -8,6 +9,7 @@ export default function ProjectCard({ project = {} }) {
     featured = false,
     githubUrl = '#',
     liveUrl = '#',
+    internalUrl = null,
   } = project;
 
   return (
@@ -44,25 +46,39 @@ export default function ProjectCard({ project = {} }) {
           </div>
 
           <div className="flex items-center gap-4 pt-2">
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="min-h-[44px] gap-[10px] px-4 py-2 rounded-lg bg-pearl-aqua-500 light:bg-pearl-aqua-400 text-dark-khaki-100 font-semibold text-sm hover:opacity-90 transition-opacity inline-flex items-center gap-1.5 focus:outline-none"
-            >            
-              Live Demo
-              <FaExternalLinkAlt className="w-4 h-4" />
-            </a>
+            {/* If internalUrl is provided, render React Router <Link> */}
+            {internalUrl ? (
+              <Link
+                to={internalUrl}
+                className="min-h-[44px] gap-[10px] px-4 py-2 rounded-lg bg-pearl-aqua-500 light:bg-pearl-aqua-400 text-dark-khaki-100 font-semibold text-sm hover:opacity-90 transition-opacity inline-flex items-center gap-1.5 focus:outline-none"
+              >
+                View Details
+                <FaArrowRight className="w-4 h-4" />
+              </Link>
+            ) : (
+              /* Otherwise, render standard external Live Demo link */
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="min-h-[44px] gap-[10px] px-4 py-2 rounded-lg bg-pearl-aqua-500 light:bg-pearl-aqua-400 text-dark-khaki-100 font-semibold text-sm hover:opacity-90 transition-opacity inline-flex items-center gap-1.5 focus:outline-none"
+              >
+                Live Demo
+                <FaExternalLinkAlt className="w-4 h-4" />
+              </a>
+            )}
 
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="min-h-[44px] gap-[10px] px-4 py-2 rounded-lg bg-deep-teal-300/30 light:bg-pale-slate-800 text-pale-slate-900 light:text-deep-teal-100 border border-deep-teal-300 light:border-pale-slate-700 font-medium text-sm hover:border-pearl-aqua-400 light:hover:border-pearl-aqua-300 transition-colors inline-flex items-center gap-1.5 focus:outline-none "            
-            >
-              Code
-              <FaGithub className="w-5 h-5" />
-            </a>
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="min-h-[44px] gap-[10px] px-4 py-2 rounded-lg bg-deep-teal-300/30 light:bg-pale-slate-800 text-pale-slate-900 light:text-deep-teal-100 border border-deep-teal-300 light:border-pale-slate-700 font-medium text-sm hover:border-pearl-aqua-400 light:hover:border-pearl-aqua-300 transition-colors inline-flex items-center gap-1.5 focus:outline-none"
+              >
+                Code
+                <FaGithub className="w-5 h-5" />
+              </a>
+            )}
           </div>
         </div>
       </div>
