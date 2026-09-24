@@ -78,11 +78,11 @@ export default function Internship() {
             </p>
           </div>
           <div
-            onClick={() => openModal('./public/images/verbal-counsel-submissions-desktop.png', 'Verbal Counsel Submissions Grid View')}
+            onClick={() => openModal('/images/verbal-counsel-submissions-desktop.png', 'Verbal Counsel Submissions Grid View')}
             className="md:w-1/2 w-full md:order-2 rounded-xl overflow-hidden border-[2px] border-pearl-aqua-300 shadow-lg bg-card-dark cursor-pointer group relative"
           >
             <img
-              src="./public/images/verbal-counsel-submissions-desktop.png"
+              src="/images/verbal-counsel-submissions-desktop.png"
               alt="Verbal Counsel Submissions Grid View"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
             />
@@ -109,11 +109,11 @@ export default function Internship() {
             </p>
           </div>
           <div
-            onClick={() => openModal('./public/images/production-log-history.png', 'Daily Production Log Data Table')}
+            onClick={() => openModal('/images/production-log-history.png', 'Daily Production Log Data Table')}
             className="md:w-1/2 w-full md:order-1 rounded-xl overflow-hidden border-[2px] border-pearl-aqua-300 shadow-lg bg-card-dark cursor-pointer group relative"
           >
             <img
-              src="./public/images/production-log-history.png"
+              src="/images/production-log-history.png"
               alt="Daily Production Log Data Table"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
             />
@@ -144,11 +144,11 @@ export default function Internship() {
             </p>
           </div>
           <div
-            onClick={() => openModal('./public/images/production-log-reports.png', 'Production Analytics and Reports Dashboard')}
+            onClick={() => openModal('/images/production-log-reports.png', 'Production Analytics and Reports Dashboard')}
             className="md:w-1/2 w-full md:order-2 rounded-xl overflow-hidden border-[2px] border-pearl-aqua-300 shadow-lg bg-card-dark cursor-pointer group relative"
           >
             <img
-              src="./public/images/production-log-reports.png"
+              src="/images/production-log-reports.png"
               alt="Production Analytics and Reports Dashboard"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
             />
